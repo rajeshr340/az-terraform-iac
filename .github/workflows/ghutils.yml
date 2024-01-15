@@ -19,7 +19,7 @@ jobs:
 
     - name: Fork to Organization
       run: |
-        gh repo fork --org SNOW-Digital-IMI --clone
+        gh repo fork --org SNOW-Digital-MCMS --clone
       env:
         GITHUB_TOKEN: ${{ secrets.KYN_GIT_PAT }}
 
