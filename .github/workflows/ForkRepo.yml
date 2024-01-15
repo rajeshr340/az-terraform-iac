@@ -24,6 +24,6 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/rajeshr340/az-terraform-iac/forks \
             -d '{
-              "name": "az-terraform-iac-1",
+              "name": "az-terraform-iac-2",
               "default_branch_only": "false"}')
-          echo "Pull Request URL: $PR_URL"
+          echo "Fork Details L: $PR_URL"
