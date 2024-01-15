@@ -18,6 +18,6 @@ jobs:
       run: |
         gh repo fork --org cloud-practice-engineering --clone
       env:
-        GITHUB_TOKEN: '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'
+        GITHUB_TOKEN: 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
 
 
