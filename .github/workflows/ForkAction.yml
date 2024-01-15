@@ -1,0 +1,20 @@
+# This is a basic workflow to help you get started with Actions
+name: Using Actions
+on:
+  workflow_dispatch:
+
+jobs:
+  fork-to-org:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fork repository
+        uses: peter-evans/create-pull-request@v3.10.0
+        with:
+          token: ${{ secrets.GH_PAT }}
+          branch: fork-to-org
+          commit-message: Forking repository to org
+          title: Forking repository to org
+          body: Forking repository to org
+          branch-suffix: timestamp
+          delete-branch: true
+          target: cloud-practice-engineering/az-terraform-iac
