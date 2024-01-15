@@ -25,5 +25,5 @@ jobs:
             https://api.github.com/repos/rajeshr340/az-terraform-iac/forks \
             -d '{
               "name": "az-terraform-iac-1",
-              "default_branch_only": "false"})
+              "default_branch_only": "false"}')
           echo "Pull Request URL: $PR_URL"
