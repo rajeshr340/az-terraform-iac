@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Authenticate with gh
-      run: gh auth login --with-token <<<"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"
+      run: gh auth login --with-token <<< ${{ secrets.GH_PAT }}
 
 
     - name: Fork to Organization
