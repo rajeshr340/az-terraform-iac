@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Fork Using GH Utils
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  #push:
+    #branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:  
+  fork-repo:    
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up gh utils
+      uses: actions4gh/setup-gh@v1
+    - name: Login to GitHub using PAT
+      run: echo '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' | gh auth login --with-token
+    - name: Fork the repository
+      run: gh repo fork --clone=true --remote=true
+
