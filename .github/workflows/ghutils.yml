@@ -14,11 +14,12 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Authenticate with gh
-      run: gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}
+    #- name: Authenticate with gh
+    #  run: gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}
 
     - name: Fork to Organization
       run: |
+        gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}
         gh repo fork --org SNOW-Digital-MCMS --clone
       env:
         GITHUB_TOKEN: ${{ secrets.KYN_GIT_PAT }}
