@@ -17,4 +17,4 @@ jobs:
           body: Forking repository to org
           branch-suffix: timestamp
           delete-branch: true
-          target: your-org-name/new-repo-name
+          target: cloud-practice-engineering/az-terraform-iac
