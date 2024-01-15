@@ -14,10 +14,14 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Authenticate with gh
+      run: gh auth login --with-token <<<"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"
+
+
     - name: Fork to Organization
       run: |
         gh repo fork --org cloud-practice-engineering --clone
-      env:
-        GITHUB_TOKEN: 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
+      #env:
+      #  GITHUB_TOKEN: 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
 
 
