@@ -13,7 +13,7 @@ jobs:
 
     - name: Fork repository to Enterprise GitHub
       env:
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ github.GH_TOKEN }}
       run: |
         REPO_NAME=$(basename $GITHUB_REPOSITORY)
         ENTERPRISE_USERNAME="cloud-practice-engineering"
