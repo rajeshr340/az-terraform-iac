@@ -26,5 +26,6 @@ jobs:
 
       - name: Update Fork Branch
         run: |
+          echo ${{ steps.fork.outputs.FORK_URL }}
           git remote add fork ${{ steps.fork.outputs.FORK_URL }}
-          git push fork $GITHUB_HEAD_REF:main
+          git push fork $GITHUB_HEAD_REF:branch05
