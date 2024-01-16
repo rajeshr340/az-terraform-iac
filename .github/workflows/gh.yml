@@ -22,6 +22,8 @@ jobs:
         # Fork the repository using gh with the provided GitHub token
         gh repo fork rajeshr340/az-terraform-iac --clone
 
+        gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}
+
         # Clone the forked repository to a new directory
         git clone https://github.com/$GITHUB_ACTOR/$REPO_NAME enterprise-$REPO_NAME
 
