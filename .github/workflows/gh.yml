@@ -12,8 +12,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Fork repository to Enterprise GitHub
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #env:
+        #GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         REPO_NAME=$(basename $GITHUB_REPOSITORY)
         ENTERPRISE_USERNAME="cloud-practice-engineering"
@@ -33,7 +33,7 @@ jobs:
         ENTERPRISE_REPO_NAME="az-terraform-iac"
         # Change into the cloned directory
         cd enterprise-$REPO_NAME
-        gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}        
+        gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.GH_TOKEN }}        
         # Set up the remote URL for the Enterprise GitHub repository
         git remote add enterprise "https://github.kyndryl.net/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
         # Push changes to the Enterprise GitHub repository
