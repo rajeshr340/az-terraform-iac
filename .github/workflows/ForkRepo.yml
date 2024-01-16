@@ -22,6 +22,6 @@ jobs:
             https://api.github.com/repos/rajeshr340/az-terraform-iac/forks \
             -d '{
               "name": "az-terraform-iac-2",
-              "default_branch_only": "false",
-              "ref": "${{github.head_ref}}"}')
+              "default_branch_only": "false"
+              }')
           echo "Fork Details L: $PR_URL"
