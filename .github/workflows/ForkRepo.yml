@@ -13,8 +13,6 @@ jobs:
 
       - name: Create Fork Request
         run: |
-          echo ${{github.ref}}
-          echo "${{toJson(github)}}"
           PR_URL=$(curl \
             -X POST \
             -H "Authorization: token ${{secrets.KYN_GIT_PAT }}" \
@@ -22,6 +20,5 @@ jobs:
             https://api.github.com/repos/rajeshr340/az-terraform-iac/forks \
             -d '{
               "name": "az-terraform-iac-2",
-              "default_branch_only": "false",
-              "ref": "${{github.ref}}"}')
+              "default_branch_only": "false"')
           echo "Fork Details L: $PR_URL"
