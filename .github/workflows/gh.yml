@@ -29,12 +29,12 @@ jobs:
         cd enterprise-$REPO_NAME
 
         # Set up the remote URL for the Enterprise GitHub repository
-        git remote add enterprise "https://github.com/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
+        git remote add enterprise "https://github.kyndryl.net/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
 
         # Push changes to the Enterprise GitHub repository
         git push -u enterprise HEAD
 
     - name: Print Enterprise repository URL
       run: |
-        ENTERPRISE_REPO_NAME="your-enterprise-repo-name"
-        echo "Forked repository URL: https://github.com/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME"
+        ENTERPRISE_REPO_NAME="az-terraform-iac"
+        echo "Forked repository URL: https://github.kyndryl.net/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME"
