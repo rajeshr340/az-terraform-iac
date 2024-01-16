@@ -22,5 +22,5 @@ jobs:
             -d '{
               "name": "az-terraform-iac-2",
               "default_branch_only": "false",
-              "ref":"${{github.head_ref}}")
+              "ref":"${{github.head_ref}}"}')
           echo "Fork Details L: $PR_URL"
