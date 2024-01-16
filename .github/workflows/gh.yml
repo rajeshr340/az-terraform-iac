@@ -1,7 +1,9 @@
 name: Fork to Enterprise GitHub
 
 on:
-  workflow_dispatch: 
+  pull_request:
+    types:
+      - opened
 
 jobs:
   fork-to-enterprise:
@@ -20,10 +22,16 @@ jobs:
         ENTERPRISE_REPO_NAME="az-terraform-iac"
 
         # Fork the repository using gh with the provided GitHub token
-        gh repo fork rajeshr340/az-terraform-iac --clone --remote=enterprise
+        gh repo fork rajeshr340/az-terraform-iac --clone
 
-        # Update the remote URL to the Enterprise GitHub repository
-        git remote set-url enterprise "https://github.kyndryl.ne/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
+        # Clone the forked repository to a new directory
+        git clone https://github.com/$GITHUB_ACTOR/$REPO_NAME enterprise-$REPO_NAME
+
+        # Change into the cloned directory
+        cd enterprise-$REPO_NAME
+
+        # Set up the remote URL for the Enterprise GitHub repository
+        git remote add enterprise "https://github.com/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
 
         # Push changes to the Enterprise GitHub repository
         git push -u enterprise HEAD
