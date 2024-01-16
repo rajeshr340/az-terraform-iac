@@ -14,7 +14,7 @@ jobs:
       - name: Create Fork Request
         run: |
           echo ${{github.ref}}
-          echo ${{toJson(github)}}
+          echo "${{toJson(github)}}"
           PR_URL=$(curl \
             -X POST \
             -H "Authorization: token ${{secrets.KYN_GIT_PAT }}" \
