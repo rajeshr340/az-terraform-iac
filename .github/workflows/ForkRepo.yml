@@ -22,6 +22,7 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
             https://api.github.com/repos/rajeshr340/$REPO_NAME/forks)
           FORK_URL=$(echo "$RESPONSE" | jq -r '.clone_url')
+          echo $FORK_URL
           echo "::set-output name=FORK_URL::$($FORK_URL)"
 
       - name: Update Fork Branch
