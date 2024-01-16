@@ -1,9 +1,7 @@
 name: Fork to Enterprise GitHub
 
 on:
-  pull_request:
-    types:
-      - opened
+  workflow_dispatch: 
 
 jobs:
   fork-to-enterprise:
