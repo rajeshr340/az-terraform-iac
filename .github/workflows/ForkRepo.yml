@@ -1,26 +1,29 @@
-name: Fork Using API
+name: Fork Branch to Organization
+
 on:
   pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+    types:
+      - opened
 
-jobs:  
-  fork-repo:    
+jobs:
+  fork:
     runs-on: ubuntu-latest
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
 
-      - name: Create Fork Request
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create Fork
+        id: fork
         run: |
-          echo "${{github.head_ref}}"
-          PR_URL=$(curl \
-            -X POST \
-            -H "Authorization: token ${{secrets.KYN_GIT_PAT }}" \
+          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
+          RESPONSE=$(curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/rajeshr340/az-terraform-iac/forks \
-            -d '{
-              "name": "az-terraform-iac-2",
-              "default_branch_only": "false",
-              "ref":"${{github.head_ref}}"}')
-          echo "Fork Details L: $PR_URL"
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+            https://api.github.com/repos/rajeshr340/$REPO_NAME/forks)
+          FORK_URL=$(echo "$RESPONSE" | jq -r '.clone_url')
+
+      - name: Update Fork Branch
+        run: |
+          git remote add fork ${{ steps.fork.outputs.FORK_URL }}
+          git push fork $GITHUB_HEAD_REF:main
