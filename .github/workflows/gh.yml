@@ -22,21 +22,22 @@ jobs:
         # Fork the repository using gh with the provided GitHub token
         gh repo fork rajeshr340/az-terraform-iac --clone
 
-        gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}
-
         # Clone the forked repository to a new directory
         git clone https://github.com/$GITHUB_ACTOR/$REPO_NAME enterprise-$REPO_NAME
 
+    - name: Print Enterprise repository URL
+      run: |
+
+        REPO_NAME=$(basename $GITHUB_REPOSITORY)
+        ENTERPRISE_USERNAME="cloud-practice-engineering"
+        ENTERPRISE_REPO_NAME="az-terraform-iac"
         # Change into the cloned directory
         cd enterprise-$REPO_NAME
-
+        gh auth login -p https -h github.kyndryl.net --with-token <<< ${{ secrets.KYN_GIT_PAT }}        
         # Set up the remote URL for the Enterprise GitHub repository
         git remote add enterprise "https://github.kyndryl.net/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
-
         # Push changes to the Enterprise GitHub repository
         git push -u enterprise HEAD
 
-    - name: Print Enterprise repository URL
-      run: |
-        ENTERPRISE_REPO_NAME="az-terraform-iac"
+        
         echo "Forked repository URL: https://github.kyndryl.net/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME"
