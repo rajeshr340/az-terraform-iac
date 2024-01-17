@@ -26,9 +26,11 @@ jobs:
     - name: Set up Git for Enterprise
       run: |
         cd cloned-repo
-        git remote add enterprise "https://github.kyndryl.net/cloud-practice-engineering/az-terraform-iac.git"
+        git remote add enterprise "https://rajeshr7:${{secrets.KYN_GIT_PAT }}@github.kyndryl.net/cloud-practice-engineering/az-terraform-iac.git"
 
     - name: Push to Enterprise repository
+     env:
+        GITHUB_TOKEN: ${{ secrets.KYN_GIT_PAT }}    
       run: |
         cd cloned-repo
         git push -u enterprise main
