@@ -15,6 +15,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
+        
         REPO_NAME=$(basename $GITHUB_REPOSITORY)
         ENTERPRISE_USERNAME="cloud-practice-engineering"
         ENTERPRISE_REPO_NAME="az-terraform-iac"
@@ -27,6 +28,9 @@ jobs:
 
         # Change into the cloned directory
         cd enterprise-$REPO_NAME
+
+        git config user.name "rajesh.r11"
+        git config user.email "rajesh.r11@kyndryl.com"
 
         # Set up the remote URL for the Enterprise GitHub repository
         git remote add enterprise "https://github.kyndryl.net/$ENTERPRISE_USERNAME/$ENTERPRISE_REPO_NAME.git"
