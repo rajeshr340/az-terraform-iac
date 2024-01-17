@@ -33,6 +33,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.KYN_GIT_PAT }}    
       run: |
         cd cloned-repo
-        git pull "https://rajeshr7:${{secrets.KYN_GIT_PAT }}@github.kyndryl.net/cloud-practice-engineering/az-terraform-iac.git"
-        git config pull.rebase false  # merge
+        git pull "https://rajeshr7:${{secrets.KYN_GIT_PAT }}@github.kyndryl.net/cloud-practice-engineering/az-terraform-iac.git"       
         git push -u enterprise main
