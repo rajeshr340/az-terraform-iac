@@ -21,7 +21,7 @@ jobs:
     - name: Clone repository
       run: |
         REPO_NAME=$(basename $GITHUB_REPOSITORY)
-        git clone --branch main --depth 1 "https://github.com/${{ github.repository }}" cloned-repo
+        git clone "https://github.com/${{ github.repository }}" cloned-repo
 
     - name: Set up Git for Enterprise
       run: |
